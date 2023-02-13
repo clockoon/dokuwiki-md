@@ -1,0 +1,3 @@
+[submodule "lib/plugins/commonmark"]
+	path = lib/plugins/commonmark
+	url = https://github.com/clockoon/dokuwiki-plugin-commonmark.git
