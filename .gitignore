@@ -1,0 +1,9 @@
+conf/acl.auth.php
+conf/local.php
+conf/local.php.bak.php
+conf/plugins.local.php
+conf/users.auth.php
+data/cache/*
+data/index/*
+data/log/*
+data/meta/*
