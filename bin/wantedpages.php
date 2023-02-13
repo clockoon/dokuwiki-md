@@ -110,7 +110,7 @@ class WantedPagesCLI extends CLI {
             }
             return WantedPagesCLI::DIR_NS;
         }
-        if(preg_match('/\.txt$/', $entry)) {
+        if(preg_match('/\.md$/', $entry)) {
             return WantedPagesCLI::DIR_PAGE;
         }
         return WantedPagesCLI::DIR_CONTINUE;
