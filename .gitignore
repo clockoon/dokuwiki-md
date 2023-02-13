@@ -7,3 +7,4 @@ data/cache/*
 data/index/*
 data/log/*
 data/meta/*
+conf/plugins.local.php.bak
