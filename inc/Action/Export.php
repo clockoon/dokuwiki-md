@@ -51,7 +51,7 @@ class Export extends AbstractAction {
         switch($mode) {
             case 'raw':
                 $headers['Content-Type'] = 'text/plain; charset=utf-8';
-                $headers['Content-Disposition'] = 'attachment; filename=' . noNS($ID) . '.txt';
+                $headers['Content-Disposition'] = 'attachment; filename=' . noNS($ID) . '.md';
                 $output = rawWiki($ID, $REV);
                 break;
             case 'xhtml':

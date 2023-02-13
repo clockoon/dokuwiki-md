@@ -303,7 +303,7 @@ function search_list(&$data,$base,$file,$type,$lvl,$opts){
     //we do nothing with directories
     if($type == 'd') return false;
     //only search txt files
-    if(substr($file,-4) == '.txt'){
+    if(substr($file,-3) == '.md'){
         //check ACL
         $id = pathID($file);
         if(auth_quickaclcheck($id) < AUTH_READ){
@@ -334,7 +334,7 @@ function search_pagename(&$data,$base,$file,$type,$lvl,$opts){
     //we do nothing with directories
     if($type == 'd') return true;
     //only search txt files
-    if(substr($file,-4) != '.txt') return true;
+    if(substr($file,-3) != '.md') return true;
 
     //simple stringmatching
     if (!empty($opts['query'])){
@@ -383,7 +383,7 @@ function search_allpages(&$data,$base,$file,$type,$lvl,$opts){
     }
 
     //only search txt files
-    if(substr($file,-4) != '.txt') return true;
+    if(substr($file,-3) != '.md') return true;
 
     $item = array();
     $item['id']   = pathID($file);
@@ -441,7 +441,7 @@ function sort_search_fulltext($a,$b){
 function pathID($path,$keeptxt=false){
     $id = utf8_decodeFN($path);
     $id = str_replace('/',':',$id);
-    if(!$keeptxt) $id = preg_replace('#\.txt$#','',$id);
+    if(!$keeptxt) $id = preg_replace('#\.md$#','',$id);
     $id = trim($id, ':');
     return $id;
 }
@@ -456,7 +456,7 @@ function pathID($path,$keeptxt=false){
  * array, where the following settings can be used.
  *
  * depth      int     recursion depth. 0 for unlimited                       (default: 0)
- * keeptxt    bool    keep .txt extension for IDs                            (default: false)
+ * keeptxt    bool    keep .md extension for IDs                            (default: false)
  * listfiles  bool    include files in listing                               (default: false)
  * listdirs   bool    include namespaces in listing                          (default: false)
  * pagesonly  bool    restrict files to pages                                (default: false)
@@ -540,7 +540,7 @@ function search_universal(&$data,$base,$file,$type,$lvl,$opts){
     }else{
         if(empty($opts['listfiles'])) return $return;
         if(empty($opts['skipacl']) && $item['perm'] < AUTH_READ) return $return;
-        if(!empty($opts['pagesonly']) && (substr($file,-4) != '.txt')) return $return;
+        if(!empty($opts['pagesonly']) && (substr($file,-3) != '.md')) return $return;
         if(empty($opts['showhidden']) && isHiddenPage($item['id'])) return $return;
         if(!empty($opts['filematch']) && !preg_match('/'.$opts['filematch'].'/',$file)) return $return;
         if(!empty($opts['idmatch']) && !preg_match('/'.$opts['idmatch'].'/',$item['id'])) return $return;
